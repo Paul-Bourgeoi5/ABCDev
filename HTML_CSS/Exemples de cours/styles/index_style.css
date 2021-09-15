@@ -1,0 +1,21 @@
+/* un commentaire CSS */
+
+/* selecteur des éléments table */
+table {
+    border: 1px solid black;
+}
+
+/*selecteur multiple */
+th, td {
+    border: 1px solid black;
+}
+
+ul {
+    border: 2px black solid;
+    border-radius: 200px;
+}
+
+.toDo {
+    margin: 50px;
+    color: blueviolet;
+}
