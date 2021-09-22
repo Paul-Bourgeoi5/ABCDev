@@ -1,6 +1,6 @@
 :root{
     --hauteur-menu:10px;
-    --couleur-grise: rgba(167, 165, 165, 0.6);
+    --couleur-grise: rgba(114, 107, 107, 0.404);
 }
 
 @font-face {
@@ -23,8 +23,10 @@ a, h2 {
 }
 
 header {
-    position: sticky;
-    background-color: rgb(0, 0, 0);
+    top: 0;
+    position:sticky;
+    position: -webkit-sticky;
+    background-color: rgba(0, 0, 0, 0.5);
     border-bottom: 1px rgba(255, 255, 255, 0.726) solid;
     height: 4em;
 }
@@ -42,16 +44,19 @@ header nav {
 }
 
 .menu {
+    width: 100%;
     padding-top: 1em;
+    float: inline-start;
 }
 
 .menu li {
     list-style: none;
 }
 
-.menu > li {
-    float: inline-end;
-    width: 20%;
+    .menu > li {
+    display: inline-block;
+    padding-left: 3%;
+    width: 15%;
     right: 0;
 }
 
@@ -69,6 +74,8 @@ header nav {
 
 .submenu {
     display: none;
+    position: absolute;
+    
 }
 
 .menu li:hover .submenu {
@@ -130,6 +137,7 @@ main > figure figcaption {
 .grid-container > h2 {
     grid-area: title;
     text-align: center;
+    color: white;
 }
 
 .grid-container > img {
@@ -148,18 +156,64 @@ main > figure figcaption {
     transition: all 1s;
 }
 
-.grid-container a {
-    border: 2px solid white;
-    background-color: grey;
-    color: black;
-    padding: 1ex;
-}
-
-
 .grid-container div:hover {
     transform: rotate(-10deg) scale(1.2);
 }
 
+.grid-container > div > a {
+    border: 2px solid white;
+    color: white;
+    background-color: grey;
+    padding: 1ex;
+}
+
+
 .grid-container div:hover > a {
     color: darkred;
+    text-shadow: 0 0 4px white;
+}
+
+.container-wine {
+    display: grid ;
+    grid-template-columns: 35% 65% ;
+    grid-template-rows: auto;
+    grid-template-areas: "selection gifts";
+    column-gap: 15px ;
+
+}
+.flex-selection {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(114, 108, 108, 0.63);
+    padding: 15px 0;
+}
+
+.flex-selection h2 {
+    text-align: center;
+    color: white;
+}
+.flex-selection ul {
+    /* list-style: inside url("/Vignoble/ressources/images/liste.png"); */
+    padding: 0;
+    list-style: none;
+    
+}
+.flex-selection li {
+    border-top: solid 1px rgb(204, 204, 204);
+    padding-left: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow-wrap: break-word;
+}
+
+.flex-selection li::before {
+    content: ">>";
+    color: white;
+    background-color: rgba(0, 0, 0, 0.404);
+    border: 3px rgba(0, 0, 0, 0.4) solid;
+    border-radius: 50%;
+}
+
+.flex-selection li:last-child {
+    border-bottom: solid 1px rgb(204, 204, 204);
 }
