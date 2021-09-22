@@ -1,0 +1,35 @@
+:root{
+    --hauteur-menu:10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/Vignoble/ressources/images/bg_motif.gif");
+}
+
+header {
+    position: sticky;
+    background-color: rgb(0, 0, 0);
+    border-bottom: 2px white solid;
+}
+
+header nav {
+    margin-left: 50%;
+    width: 50%;
+}
+.menu > li >a{
+    color: white;
+    list-style: none;
+    text-decoration: none;
+    padding-left: 3%;
+    padding-right: 3%;
+    text-align: center;
+}
+.menu a:hover{
+    color: red;
+}
+
+
