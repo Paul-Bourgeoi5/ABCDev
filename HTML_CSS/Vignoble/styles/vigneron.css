@@ -1,6 +1,7 @@
 :root{
     --hauteur-menu:10px;
-    --couleur-grise: rgba(114, 107, 107, 0.404);
+    --couleur-grise-background: #5755557a;
+    --couleur-grise-section: rgba(151, 150, 150, 0.2);
 }
 
 @font-face {
@@ -67,6 +68,7 @@ header nav {
     padding: 3%;
     text-align: center;
     display: block;
+    /* width: 100%; */
 }
 
 .menu a:hover{
@@ -81,6 +83,7 @@ header nav {
 
 .menu li:hover .submenu {
     display: block;
+    width: 10%;
 }
 
 .submenu a {
@@ -91,12 +94,14 @@ header nav {
 main {
     margin-left: 15%;
     margin-right: 15%;
-    padding: 2em;
-    background-color: var(--couleur-grise);
+    padding: 2em 0;
+    background-color: var(--couleur-grise-background);
 }
 
 main > figure {
     background-color: white;
+    box-shadow: 0 0 15px white;
+    margin: 0 2em 2em 2em;    
 }
 
 main > figure > img {
@@ -105,7 +110,7 @@ main > figure > img {
 
 main > figure figcaption {
     padding: 1ex;
-    border-top: solid 2px var(--couleur-grise);
+    border-top: solid 2px var(--couleur-grise-background);
     color: darkred;
     font-size:large;
     text-align: center;
@@ -117,6 +122,7 @@ main > figure figcaption {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin: 2em;
     gap: 3em;
 }
 
@@ -175,36 +181,43 @@ main > figure figcaption {
 }
 
 .container-wine {
+    margin: 2em;
     display: grid ;
-    grid-template-columns: 35% 65% ;
+    grid-template-columns: 1fr 2fr ;
     grid-template-rows: auto;
     grid-template-areas: "selection gifts";
     column-gap: 15px ;
-
+    column-gap: 15px;
 }
-.flex-selection {
+.notre-selection {
+    background-color: var(--couleur-grise-section);
+    grid-row: 1;
+    grid-column: 1;
+    
     display: flex;
     flex-direction: column;
-    background-color: rgba(114, 108, 108, 0.63);
-    padding: 15px 0;
+    flex-wrap: nowrap;
 }
 
-.flex-selection h2 {
+.container-wine h2 {
     text-align: center;
     color: white;
+    flex-grow: 1;
 }
-.flex-selection ul {
-    /* list-style: inside url("/Vignoble/ressources/images/liste.png"); */
-    padding: 0;
+
+.notre-selection ul {
+    flex-grow: 2;
+    padding: 15px 0;
     list-style: none;
-    
+    align-content: space-between;
 }
-.flex-selection li {
+.notre-selection ul li {
     border-top: solid 1px rgb(204, 204, 204);
     padding-left: 50px;
     padding-top: 5px;
     padding-bottom: 5px;
     overflow-wrap: break-word;
+    flex-basis: 20%;
 }
 
 .flex-selection li::before {
@@ -220,12 +233,10 @@ main > figure figcaption {
 }
 
 .gifts {
-    background-color: var(--couleur-grise);
+    background-color: var(--couleur-grise-section);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 50px;
-    /* background-color: rgb(152, 121, 160); */
-    /* align-items: center; */
     column-gap: 20px;
 }
 
@@ -268,6 +279,14 @@ main > figure figcaption {
     align-items: center;
     justify-content: center;    
 }  
+
+hr {
+    border: 1px solid var(--couleur-grise-section);
+}
+
+
+
+
 footer{
     background-image: url("/Vignoble/ressources/images/footer-bg.png");
     background-repeat: no-repeat;
