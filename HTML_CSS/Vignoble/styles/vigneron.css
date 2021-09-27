@@ -160,7 +160,7 @@ main > figure figcaption {
 }
 .button {
     text-align: center;
-    padding-top: 2em;
+    padding-top: 1em;
     transition: all 1s;
 }
 
@@ -171,7 +171,7 @@ main > figure figcaption {
 .button > a {
     color: white;
     background-color: grey;
-    padding: 1ex;
+    padding: 0 1ex;
 }
 
 
@@ -277,8 +277,19 @@ main > figure figcaption {
     grid-column: 2;
     grid-row: 3 / 4;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;   
+    
 }  
+.moche > a {
+    background-image: url("/Vignoble/ressources/images/lire.png"); 
+    background-repeat: repeat-x;
+    background-position:bottom;
+    transition: all 1s;
+}
+
+.moche:hover > a {
+    background-position:top;
+}
 
 hr {
     border: 1px solid var(--couleur-grise-section);
@@ -294,17 +305,45 @@ footer{
     margin-left: 15%;
     margin-right: 15%;
     padding: 2em;
+    border-top: 1px solid rgb(146, 145, 145);
+    
 } 
 footer nav{
     display:grid;
     grid-template-columns: repeat(5,1fr) 200px;
     grid-template-rows:2;
-    grid-template-areas:"Accueil Cave vigneron produits contact ."
-    ". . . . . img";
+    grid-template-areas:"footerMenu footerMenu footerMenu footerMenu footerMenu ."
+    ". . . . img img";
 }
 .footer-picture{
     grid-area: img;
+    align-items: center;
+   
 }
+
+footer nav ul {
+    grid-area: footerMenu ;
+    display: grid ;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 1 ;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+footer nav ul li  {
+    list-style-type: none ;
+    padding-top: 5%;
+    
+}
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+
+
+
 
 
 
