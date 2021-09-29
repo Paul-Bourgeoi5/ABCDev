@@ -127,7 +127,7 @@ main > figure figcaption {
 }
 
 .grid-container {
-    background-image: url("/Vignoble/ressources/images/bg_g.png");
+    background-image: url("../ressources/images/bg_g.png");
     background-repeat: no-repeat;
     background-size: contain;
     margin-top: 5em;
@@ -281,7 +281,7 @@ main > figure figcaption {
     
 }  
 .moche > a {
-    background-image: url("/Vignoble/ressources/images/lire.png"); 
+    background-image: url("../ressources/images/lire.png"); 
     background-repeat: repeat-x;
     background-position:bottom;
     transition: all 1s;
@@ -299,7 +299,7 @@ hr {
 
 
 footer{
-    background-image: url("/Vignoble/ressources/images/footer-bg.png");
+    background-image: url("../ressources/images/footer-bg.png");
     background-repeat: no-repeat;
     background-size:contain;
     margin-left: 15%;
