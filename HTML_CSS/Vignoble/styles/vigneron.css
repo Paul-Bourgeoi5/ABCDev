@@ -6,9 +6,9 @@
 
 @font-face {
     font-family: channel;
-    src: url("/Vignoble/ressources/fonts/channel-webfont.ttf") format("truetype"),
-    url("/Vignoble/ressources/fonts/channel-webfont.woff") format("woff"),
-    url("/Vignoble/ressources/fonts/channel-webfont.svg") format("svg");
+    src: url("../ressources/fonts/channel-webfont.ttf") format("truetype"),
+    url("../ressources/fonts/channel-webfont.woff") format("woff"),
+    url("../ressources/fonts/channel-webfont.svg") format("svg");
 }
 
 * {
@@ -17,7 +17,7 @@
 }
 
 body {
-    background-image: url("/Vignoble/ressources/images/bg_motif.gif");
+    background-image: url("../ressources/images/bg_motif.gif");
 }
 a, h2 {
     font-family: channel;
