@@ -1,0 +1,6 @@
+Modifier le fichier counter.JS pour :
+	- afficher le temps passé sur la page au bon endroit
+	- ajoutez le temps passé en minutes dans la div de classe 'vide' 
+	- ajoutez du changement de style toutes les 20 secondes sur les différentes div de la page HTML
+	- ajoutez la possibilité d'arrêter les changements de styles en cliquant sur le lien de classe 'stop'
+
