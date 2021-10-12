@@ -1,0 +1,12 @@
+.hidden-content {
+    visibility: hidden;
+    height: 0;
+}
+
+.important {
+    background-color: darkred;
+    color: white;
+    text-shadow: 3px black;
+    text-decoration: underline;
+    width: fit-content;
+}

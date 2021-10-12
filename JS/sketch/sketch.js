@@ -29,19 +29,36 @@
 
 
 window.onload = function() {
+    
+    ajouterBoutonCreationListe()
+    
+    creerFormulaire();
     let listeDeCourses = document.createElement("ul");
     document.body.appendChild(listeDeCourses);
-    creerFormulaire();
 
-
+    ajouterPositionSouris();
 
 }
 
+
+function ajouterBoutonCreationListe() {
+    let boutonAjouterListe = document.createElement("button");
+    boutonAjouterListe.textContent = "Modifier liste"
+    boutonAjouterListe.classList.add("ajout-liste")
+
+    boutonAjouterListe.onclick = function (evenement) {
+        evenement.target.classList.add("hidden-content");
+        document.querySelector("form").classList.remove("hidden-content");
+    };
+
+    document.body.appendChild(boutonAjouterListe);
+}
 
 function creerFormulaire() {
     let formulaire = document.createElement("form");
     formulaire.setAttribute("action", "#");
     formulaire.setAttribute("method", "post");
+    formulaire.classList.add("hidden-content");
 
     let divArticle = document.createElement("div");
 
@@ -53,8 +70,8 @@ function creerFormulaire() {
     inputArticle.setAttribute("id", "nom-article");
     inputArticle.setAttribute("name", "nom-article");
     inputArticle.setAttribute("type", "text");
-    inputArticle.setAttribute("required", "required");
     inputArticle.setAttribute("pattern", "[A-Za-z]+");
+    inputArticle.setAttribute("required", "required");
 
 
     let divQuantite = document.createElement("div");
@@ -74,20 +91,29 @@ function creerFormulaire() {
     boutonAjout.addEventListener("click", function(evenement) {
         evenement.stopPropagation();
         evenement.preventDefault();
-
-        let article = inputArticle.value.replace(/\s/g, "").toLowerCase();
-        if (article.length > 0) {
+        // inputArticle.checkValidity();
+        if (inputArticle.checkValidity()) {
+            let article = inputArticle.value.toLowerCase();
             console.log(article);
             let quantite = parseInt(inputQuantite.value);
             if (isNaN(quantite)) {
                 quantite = 1;
             }
-            quantite = verifierQuantiteArticle(article, quantite);
-            article = verifierPluriel(article, quantite);
+
+            let existe = articleExiste(article);
+            if (existe != null) {
+                quantite = mAJArticle(existe, quantite);
+            } else {
             
-            let nouvelArticle = document.createElement("li");
-            nouvelArticle.textContent = `${quantite} ${article}`
-            document.querySelector("ul").appendChild(nouvelArticle);
+                let nouvelArticle = document.createElement("li");
+                nouvelArticle.textContent = `${quantite} ${article}`
+                nouvelArticle.addEventListener("click", (event) => changerImportance(event));
+                document.querySelector("ul").appendChild(nouvelArticle);
+            }
+            
+            
+        } else {
+            alert("Votre article ne peut être vide, contenir de espaces ou contenir des caractères spéciaux");
         }
     });
 
@@ -99,7 +125,8 @@ function creerFormulaire() {
         evenement.stopPropagation();
         evenement.preventDefault();
 
-        document.querySelector("form").setAttribute("hidden", "hidden");
+        document.querySelector(".ajout-liste").classList.remove("hidden-content");
+        document.querySelector("form").classList.add("hidden-content");
 
     });
 
@@ -118,22 +145,47 @@ function creerFormulaire() {
 
 
 
-function verifierQuantiteArticle(article, quantite) {
-    let liste = document.querySelector("ul");
-    for(let li of liste.children) {
-        if (li.textContent.includes(article)){
-            quantite = quantite + parseInt(li.textContent.split(" ")[0]);
-            liste.removeChild(li);
-        }
-    }
-    return quantite;
+function mAJArticle(element, quantite) {
+    let tabQuantiteEtArticle = element.textContent.split(" ");
+    tabQuantiteEtArticle[0] = parseInt(tabQuantiteEtArticle[0]) + quantite;
+    element.textContent = tabQuantiteEtArticle.join(" ");
 }
 
-function verifierPluriel(article, quantite) {
-    if (quantite > 1) {
-        if (!article.match(/\*s/)) {
-            article = article + "s";
+
+function ajouterPositionSouris() {
+    let position = document.createElement("p");
+    document.body.appendChild(position);
+    document.body.addEventListener("mousemove", function(event) {
+        position.textContent = `position x : ${event.pageX}     position y : ${event.pageY}`;
+        let width = window.document.body.clientWidth;
+        let alpha = (event.pageX / width * 0.7) + 0.1;
+        let height = document.body.clientHeight;
+        let red = parseInt(event.pageY / height * 255);
+        let blue = parseInt((event.pageY / height * 50) + 50 );
+        let green = parseInt((150 - ((event.pageY) / height * 150)) );
+
+        console.log (`r :   ${red}      g : ${green}       b : ${blue}`)
+        document.body.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${alpha}`;
+    });
+}
+
+function changerImportance(evenement) {
+    let element = evenement.target;
+    if (element.classList.contains("important") ) {
+        element.classList.remove("important");
+    } else {
+        element.classList.add("important");
+    }
+}
+
+function articleExiste(article) {
+    let listeArticles = document.querySelector("ul").children;
+    let result;
+    for(let liElement of listeArticles){
+        let nomArticle = liElement.textContent.split(" ")[1];
+        if (nomArticle === article || nomArticle === article+'s' || nomArticle+'s' === article) {
+            result = liElement;
         }
     }
-    return article;
+    return result;
 }
