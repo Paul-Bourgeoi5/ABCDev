@@ -1,6 +1,6 @@
 - Faites saisir une liste de course à votre utilisateur. Puis affichez cette liste en manipulant le DOM d'un fichier HTML dont le body est vide de base
 
-- Reprenez le code qui affichait une heure augmentait l'heure d'une seconde. Faites en sorte d'augmenter les secondes en cliquant sur un élément HTML que vous ajoutez au DOM
+- Reprenez le code qui affichait une heure et l'augmentait d'une seconde. Faites en sorte d'augmenter les secondes en cliquant sur un élément HTML que vous ajoutez au DOM
 
 - Regardez le fonctionnement des fichiers exampleDOM.html, exampleDOM.js et style.css dans le dossier ManipulationDOM en modifiant le fichier js:
 	- ajoutez de nouveaux articles

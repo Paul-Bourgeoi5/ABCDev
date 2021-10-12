@@ -102,15 +102,15 @@ Mettre sous la forme d'une fonction récursive la fonction qui teste les palindr
 /*Exercice 4 4
 Écrire une fonction récursive qui calcule la suite de Fibonnacci d'un entier n*/
 
-console.log(fibonnacci(25));
+// console.log(fibonnacci(25));
 
-function fibonnacci (nombreEntier) {
-    if(nombreEntier === 0) {
-        return 0;
-    } else if (nombreEntier === 1) {
-        return 1;
-    } else {
-        return (fibonnacci(nombreEntier-1) + fibonnacci(nombreEntier -2));
-    }
-}
+// function fibonnacci (nombreEntier) {
+//     if(nombreEntier === 0) {
+//         return 0;
+//     } else if (nombreEntier === 1) {
+//         return 1;
+//     } else {
+//         return (fibonnacci(nombreEntier-1) + fibonnacci(nombreEntier -2));
+//     }
+// }
 
