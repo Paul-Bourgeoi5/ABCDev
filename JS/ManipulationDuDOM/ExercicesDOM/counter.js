@@ -1,12 +1,12 @@
-//Vous n'êtes pas obligés de comprendre la class compteur
+//Vous n'êtes pas obligés de comprendre toute la classe compteur
 class Compteur {
-    constructor(début, delaiEnMilisecondes) {
+    constructor(début, delaiEnMilisecondes, elementHTML) {
         this.compte = début;
-        this.spanElement = document.createElement("span");
+        this.elementHTML = elementHTML;
 
         setInterval(() => {
             this.compte++;
-            this.spanElement.textContent = this.compte;
+            this.elementHTML.textContent = this.compte;
         }, delaiEnMilisecondes);
     }
 }
@@ -15,8 +15,10 @@ class Compteur {
 
 let span = document.querySelector("body div");
 
-let compteSeconde = new Compteur(0, 1000);
-
-span.parentElement.replaceChild(compteSeconde.spanElement, span);
-
+/*Un compteur prend 3 paramètre d'entrée : 
+début : nombre auquel le compteur commence
+delaiEnMilisecondes : l'intervalle de temps entre chaque incrémentation du compteur
+elementHTML : élément HTML dans lequel le compteur est affiché
+ */
+let compteSeconde = new Compteur(0, 1000, span);
 
