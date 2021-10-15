@@ -2,11 +2,12 @@ let canvas = document.querySelector("canvas");
 let context = canvas.getContext("2d");
 let bubbles = [];
 let counter = 0;
+const movesBeforeNewBubble = 1; 
 canvas.height = 500;
 canvas.width = 500;
 
 
-setInterval(draw, 100);
+setInterval(draw, 90);
 
 class Bubble {
     constructor(x, y, r, canvasContext) {
@@ -26,8 +27,8 @@ class Bubble {
     }
 
     move() {
-        this.x = this.x + (Math.floor((Math.random() *7))-3);
-        this.y = this.y + (Math.floor((Math.random() *7))-3);
+        this.x = this.x + (Math.floor((Math.random() *5))-2);
+        this.y = this.y + (Math.floor((Math.random() *5))-2);
     }
 
     isClicked(x,y) {
@@ -49,6 +50,7 @@ canvas.addEventListener("click", function(event) {
     for (let i = 0 ; i < bubbles.length ; i++) {
         if (bubbles[i].isClicked(event.offsetX, event.offsetY)) {
             bubbles.splice(i,1);
+            bubbles.slice
             document.querySelector("strong").textContent = bubbles.length;
         }
     }
@@ -56,7 +58,7 @@ canvas.addEventListener("click", function(event) {
 
 function draw() {
     counter++;
-    if (counter >= 5) {
+    if (counter >= movesBeforeNewBubble) {
         addNewBubbleIn(bubbles);
         counter = 0;
         
